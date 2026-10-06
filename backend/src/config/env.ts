@@ -7,7 +7,7 @@ dotenv.config();
 const envSchema = z.object({
   PORT: z.coerce.number().default(4000),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  CORS_ORIGIN: z.string().default('http://localhost:3000'),
+  CORS_ORIGIN: z.string().default('*'),
 
   // Supabase
   SUPABASE_URL: z.string().transform(url => url.trim().replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '')),
