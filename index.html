@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus — The All-in-One AI Workspace for Your Company</title>
+  <meta name="description" content="Nexus connects all your company tools, automates everyday team tasks, and lets you find answers instantly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-light">
+  <div class="app-container" id="app">
+    
+    <!-- Left Navigation Bar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">Nexus</span>
+            <span class="brand-badge">Company Workspace</span>
+          </div>
+        </div>
+        <button class="collapse-btn" id="sidebarToggle" title="Toggle Navigation Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">MAIN WORKSPACE</div>
+        <a href="#overview" class="nav-item active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span class="nav-text">Dashboard</span>
+          <span class="pill-badge live">Live</span>
+        </a>
+        <a href="#workflows" class="nav-item" data-tab="workflows">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span class="nav-text">Smart Workflows</span>
+          <span class="pill-count" id="pendingWorkflowCount">3</span>
+        </a>
+        <a href="#knowledge" class="nav-item" data-tab="knowledge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="nav-text">Ask Company AI</span>
+        </a>
+        <a href="#insights" class="nav-item" data-tab="insights">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+          <span class="nav-text">Team Insights</span>
+        </a>
+
+        <div class="nav-section-label">SETTINGS & TOOLS</div>
+        <a href="#integrations" class="nav-item" data-tab="integrations">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+          <span class="nav-text">Connected Apps</span>
+          <span class="status-indicator-dot online"></span>
+        </a>
+        <a href="#audit" class="nav-item" data-tab="audit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span class="nav-text">Activity History</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="security-status-card">
+          <div class="sec-header">
+            <span class="sec-dot green"></span>
+            <span class="sec-label">Privacy Shield Active</span>
+          </div>
+          <p class="sec-sub">Company data stays private & protected</p>
+        </div>
+        <div class="user-profile">
+          <div class="avatar">AK</div>
+          <div class="user-details">
+            <span class="user-name">Alexandre Kim</span>
+            <span class="user-role">Operations Lead</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="main-content" id="mainContent">
+      
+      <!-- Top Bar with Search & Actions -->
+      <header class="top-nav">
+        <div class="search-trigger-container">
+          <button class="omni-search-bar" id="omniSearchTrigger" title="Press Ctrl+K to search">
+            <div class="search-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span class="search-placeholder">Ask any question or find anything across all your tools...</span>
+            </div>
+            <div class="search-shortcut">
+              <kbd class="key-badge">Ctrl</kbd>
+              <kbd class="key-badge">K</kbd>
+            </div>
+          </button>
+        </div>
+
+        <div class="top-actions">
+          <!-- Live AI Engine Indicator -->
+          <div class="agent-pulse-pill" title="Nexus AI Assistant is actively running">
+            <span class="pulse-beacon"></span>
+            <span>AI Ready</span>
+          </div>
+
+          <!-- Quick Tour / Help Button -->
+          <button class="action-icon-btn" id="helpTourBtn" title="How Nexus works (Quick Guide)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </button>
+
+          <!-- Notifications Button -->
+          <div class="notification-wrapper">
+            <button class="action-icon-btn" id="notificationsBtn" title="Recent Notifications">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-indicator" id="notifBadge"></span>
+            </button>
+            
+            <!-- Notifications Dropdown -->
+            <div class="notif-dropdown hidden" id="notifDropdown">
+              <div class="notif-header">
+                <span class="notif-title">Recent Updates</span>
+                <button class="notif-clear-btn" id="clearNotifsBtn">Mark all as read</button>
+              </div>
+              <div class="notif-list" id="notifList">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Task Primary Button -->
+          <button class="action-primary-btn" id="triggerAgentModalBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>+ Start a Task</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views -->
+      <div class="content-body">
+        
+        <!-- VIEW 1: Dashboard Overview -->
+        <section class="tab-pane active" id="view-overview">
+          
+          <!-- Friendly Morning Briefing Banner -->
+          <div class="ai-executive-banner">
+            <div class="banner-sparkle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+            </div>
+            <div class="banner-content">
+              <div class="banner-header">
+                <h3>Good morning, Alexandre! Here's your daily summary</h3>
+                <span class="confidence-tag">Updated 5 mins ago</span>
+              </div>
+              <p>
+                Nexus scanned your connected tools (Salesforce, Google Docs, NetSuite, and Jira). Everything looks healthy! You have <strong>3 items waiting for your review</strong>, including an unexpected $41,200 server charge and a new vendor contract.
+              </p>
+            </div>
+            <div class="banner-cta">
+              <button class="banner-btn" id="reviewQueueBannerBtn">Review Items (3)</button>
+            </div>
+          </div>
+
+          <!-- Clean Metric Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-title">Average Time to Complete Tasks</span>
+                <span class="kpi-trend positive">&darr; 95% faster</span>
+              </div>
+              <div class="kpi-value">1.4 mins</div>
+              <div class="kpi-subtext">Previously took 4 days of back-and-forth emails</div>
+              <div class="kpi-sparkline" id="sparkline1"></div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-title">Tasks Solved Automatically</span>
+                <span class="kpi-trend positive">84.2%</span>
+              </div>
+              <div class="kpi-value">1,942 <span class="kpi-unit">this week</span></div>
+              <div class="kpi-subtext">Only 308 required human confirmation</div>
+              <div class="kpi-sparkline" id="sparkline2"></div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-title">Company Money Saved</span>
+                <span class="kpi-trend positive">+$184,500</span>
+              </div>
+              <div class="kpi-value">$184,500</div>
+              <div class="kpi-subtext">Caught duplicate vendor bills & unused servers</div>
+              <div class="kpi-sparkline" id="sparkline3"></div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <span class="kpi-title">Data Privacy & Security</span>
+                <span class="kpi-trend neutral">100% Protected</span>
+              </div>
+              <div class="kpi-value">31,480 <span class="kpi-unit">private words shielded</span></div>
+              <div class="kpi-subtext">Zero private info leaked or shared</div>
+              <div class="kpi-sparkline" id="sparkline4"></div>
+            </div>
+          </div>
+
+          <!-- Main Interactive Widgets -->
+          <div class="dashboard-widgets-grid" id="dashboardWidgets">
+            
+            <!-- WIDGET 1: Interactive Chart -->
+            <div class="widget-card col-span-8" id="widget-analytics">
+              <div class="widget-header">
+                <div class="widget-title-area">
+                  <h4>How Fast Your Team Solves Problems</h4>
+                </div>
+                <div class="widget-controls">
+                  <div class="chart-filter-pills" id="chartPills">
+                    <button class="pill active" data-period="7d">Last 7 Days</button>
+                    <button class="pill" data-period="30d">Last 30 Days</button>
+                    <button class="pill" data-period="90d">Last 3 Months</button>
+                  </div>
+                  <button class="widget-icon-btn" id="expandChartBtn" title="Toggle full size">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <polyline points="9 21 3 21 3 15"></polyline>
+                      <line x1="21" y1="3" x2="14" y2="10"></line>
+                      <line x1="3" y1="21" x2="10" y2="14"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="widget-body">
+                <div class="chart-legend-row">
+                  <div class="legend-item"><span class="legend-color blue"></span> Automated by AI (Minutes)</div>
+                  <div class="legend-item"><span class="legend-color purple"></span> Checked by You (Quick Review)</div>
+                  <div class="legend-item"><span class="legend-color orange"></span> Old Manual Way (Days)</div>
+                  <div class="legend-stat ml-auto">Result: <strong>4.8x more productive</strong></div>
+                </div>
+
+                <div class="chart-canvas-wrapper">
+                  <canvas id="velocityChart" height="230"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- WIDGET 2: Approvals Queue -->
+            <div class="widget-card col-span-4" id="widget-approvals">
+              <div class="widget-header">
+                <div class="widget-title-area">
+                  <h4>Tasks Waiting for Your Review</h4>
+                </div>
+                <span class="badge warning" id="hitlBadge">3 Needs Action</span>
+              </div>
+              
+              <div class="widget-body p-0">
+                <div class="approval-list" id="approvalList">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- WIDGET 3: Real-Time Live Activity Feed -->
+            <div class="widget-card col-span-6" id="widget-activity">
+              <div class="widget-header">
+                <div class="widget-title-area">
+                  <h4>Live AI Activity Stream</h4>
+                </div>
+                <span class="live-tag"><span class="dot"></span> Running automatically</span>
+              </div>
+              <div class="widget-body">
+                <div class="activity-timeline" id="liveActivityFeed">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- WIDGET 4: Connected Apps Overview -->
+            <div class="widget-card col-span-6" id="widget-sources">
+              <div class="widget-header">
+                <div class="widget-title-area">
+                  <h4>Connected Company Apps</h4>
+                </div>
+                <button class="btn-subtle-action" id="manageAppsQuickBtn">View All Apps (6)</button>
+              </div>
+              <div class="widget-body">
+                <div class="connectors-matrix">
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand salesforce">SF</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">Salesforce</div>
+                    <div class="con-meta">Customer deals & contacts</div>
+                  </div>
+
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand workday">WD</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">Workday</div>
+                    <div class="con-meta">Team directory & roles</div>
+                  </div>
+
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand jira">JIRA</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">Jira Software</div>
+                    <div class="con-meta">Tech projects & bug tickets</div>
+                  </div>
+
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand sap">SAP</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">SAP & NetSuite</div>
+                    <div class="con-meta">Invoices & finance ledger</div>
+                  </div>
+
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand msft">DOCS</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">Google Drive & SharePoint</div>
+                    <div class="con-meta">Company guides & contracts</div>
+                  </div>
+
+                  <div class="connector-card">
+                    <div class="con-header">
+                      <div class="con-brand snow">DWH</div>
+                      <span class="con-status active" title="Active"></span>
+                    </div>
+                    <div class="con-name">Snowflake</div>
+                    <div class="con-meta">Company reports & analytics</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- VIEW 2: Smart Workflows -->
+        <section class="tab-pane" id="view-workflows">
+          <div class="section-title-row">
+            <div>
+              <h2>Smart Automated Workflows</h2>
+              <p class="subtitle">Nexus runs complex tasks across multiple apps, and pauses whenever human approval is needed.</p>
+            </div>
+            <div class="section-actions">
+              <button class="action-primary-btn" id="openCreateWorkflowBtn">+ Start a Workflow</button>
+            </div>
+          </div>
+
+          <!-- Active Workflow Progress Banner (when one is running) -->
+          <div class="active-runner-banner hidden" id="activeRunnerBanner">
+            <div class="runner-header">
+              <div class="runner-spinner"></div>
+              <div>
+                <strong id="runnerTitle">Running Workflow...</strong>
+                <p id="runnerStepText" style="font-size: 0.8rem; color: #64748B;">Step 1 of 4: Checking data...</p>
+              </div>
+            </div>
+            <div class="runner-progress-bar">
+              <div class="runner-progress-fill" id="runnerProgressFill"></div>
+            </div>
+          </div>
+
+          <div class="workflows-catalog" id="workflowsCatalog">
+            <!-- Rendered in app.js -->
+          </div>
+        </section>
+
+        <!-- VIEW 3: Ask Company AI (RAG) -->
+        <section class="tab-pane" id="view-knowledge">
+          <div class="section-title-row">
+            <div>
+              <h2>Ask Company AI</h2>
+              <p class="subtitle">Ask any question in plain English. Nexus searches all your Google Docs, Salesforce deals, Jira tickets, and policies to give you clear answers with sources.</p>
+            </div>
+          </div>
+          
+          <div class="rag-playground">
+            <!-- Sample Prompt Suggestions -->
+            <div class="prompt-chips-container">
+              <span class="chips-label">Try asking:</span>
+              <button class="prompt-chip" data-query="Compare Q3 cloud spending with our approved budget">💰 Compare Q3 cloud spending with budget</button>
+              <button class="prompt-chip" data-query="What is our company policy on vendor liability limits?">📜 What are our vendor liability limits?</button>
+              <button class="prompt-chip" data-query="Who can approve contracts above $50k in EMEA?">✍️ Who approves contracts over $50k?</button>
+              <button class="prompt-chip" data-query="Show open IT support tickets waiting on customers">🎫 Open IT support tickets</button>
+            </div>
+
+            <div class="rag-input-box">
+              <input type="text" id="ragQueryInput" placeholder="Ask anything about your company..." value="Compare Q3 cloud spending with our approved budget">
+              <button class="rag-submit-btn" id="ragSubmitBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Find Answer</span>
+              </button>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div class="rag-skeleton-loader hidden" id="ragSkeleton">
+              <div class="skeleton-pill-header"></div>
+              <div class="skeleton-line full"></div>
+              <div class="skeleton-line three-fourths"></div>
+              <div class="skeleton-line half"></div>
+              <div class="skeleton-badges">
+                <span class="skeleton-pill"></span>
+                <span class="skeleton-pill"></span>
+                <span class="skeleton-pill"></span>
+              </div>
+            </div>
+
+            <!-- Result Card -->
+            <div class="rag-result-card" id="ragResultCard">
+              <div class="result-header">
+                <div class="result-badge">Verified Answer &bull; Checked 4 Sources</div>
+                <div class="security-chip">&#10003; Privacy Verified</div>
+              </div>
+              <div class="result-body" id="ragResultContent">
+                <!-- Injected via app.js -->
+              </div>
+              <div class="result-sources">
+                <div class="sources-label">SOURCE DOCUMENTS USED TO ANSWER:</div>
+                <div class="sources-list" id="ragSourcesList">
+                  <a href="javascript:void(0)" class="citation-pill" onclick="showCitationPreview('NetSuite Ledger')"><span class="source-icon ns"></span> NetSuite: Q3 Financial Ledger</a>
+                  <a href="javascript:void(0)" class="citation-pill" onclick="showCitationPreview('Jira Infrastructure Report')"><span class="source-icon jira"></span> Jira: Engineering Cloud Budget</a>
+                  <a href="javascript:void(0)" class="citation-pill" onclick="showCitationPreview('Company Cloud Policy')"><span class="source-icon sp"></span> Google Drive: 2026 Cloud Spending Policy.pdf</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: Team Insights -->
+        <section class="tab-pane" id="view-insights">
+          <div class="section-title-row">
+            <div>
+              <h2>Proactive Team Suggestions</h2>
+              <p class="subtitle">Nexus watches your team's workflow to help you spot bottlenecks, budget surprises, or delays before they happen.</p>
+            </div>
+          </div>
+          <div class="predictive-grid" id="predictiveGrid">
+            <!-- Rendered in app.js -->
+          </div>
+        </section>
+
+        <!-- VIEW 5: Connected Apps -->
+        <section class="tab-pane" id="view-integrations">
+          <div class="section-title-row">
+            <div>
+              <h2>Connected Tools & Apps</h2>
+              <p class="subtitle">Securely linked to your everyday applications with strict permission settings.</p>
+            </div>
+            <div class="section-actions">
+              <button class="action-primary-btn" id="connectNewAppBtn">+ Link New Application</button>
+            </div>
+          </div>
+          <div class="governance-cards-container" id="governanceCards">
+            <!-- Rendered in app.js -->
+          </div>
+        </section>
+
+        <!-- VIEW 6: Activity History -->
+        <section class="tab-pane" id="view-audit">
+          <div class="section-title-row">
+            <div>
+              <h2>Activity History & Audit Trail</h2>
+              <p class="subtitle">An unalterable record of all automated actions and human decisions for complete peace of mind.</p>
+            </div>
+            <div class="section-actions">
+              <button class="banner-btn" id="exportAuditBtn">Download Report (JSON)</button>
+            </div>
+          </div>
+          <div class="audit-table-wrapper">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th>When</th>
+                  <th>Who / Assistant</th>
+                  <th>What Happened</th>
+                  <th>App Affected</th>
+                  <th>Permission Level</th>
+                  <th>Safety Check</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="auditTableBody">
+                <!-- Rendered in app.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- OMNI-SEARCH RAYCAST MODAL OVERLAY (Ctrl+K) -->
+    <div class="omni-modal-overlay hidden" id="omniModalOverlay">
+      <div class="omni-dialog" role="dialog" aria-modal="true">
+        <div class="omni-input-bar">
+          <svg class="omni-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="omniInput" placeholder="Type what you want to do, search a document, or ask a question..." autofocus autocomplete="off">
+          <div class="omni-esc-badge" id="omniCloseBtn">ESC</div>
+        </div>
+
+        <!-- Filter category tags -->
+        <div class="omni-filter-tabs">
+          <button class="omni-tab active" data-filter="all">All</button>
+          <button class="omni-tab" data-filter="actions">Automated Tasks</button>
+          <button class="omni-tab" data-filter="rag">Questions & Documents</button>
+          <button class="omni-tab" data-filter="nav">Jump to Page</button>
+        </div>
+
+        <div class="omni-results-panel" id="omniResults">
+          <!-- Rendered in app.js -->
+        </div>
+
+        <div class="omni-footer">
+          <div class="omni-tip">
+            <span><kbd>&uarr;</kbd> <kbd>&darr;</kbd> Navigate</span>
+            <span><kbd>&crarr;</kbd> Select</span>
+            <span><kbd>Esc</kbd> Close</span>
+          </div>
+          <div class="omni-security-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Only shows what you have permission to view
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUMAN APPROVAL (HITL) DRAWER -->
+    <div class="hitl-drawer-overlay hidden" id="hitlOverlay">
+      <div class="hitl-drawer" id="hitlDrawer">
+        <div class="drawer-header">
+          <div class="drawer-header-left">
+            <span class="drawer-badge high-risk" id="drawerBadge">NEEDS YOUR APPROVAL</span>
+            <h3 id="drawerWorkflowTitle">Unexpected Cloud Bill ($41,200)</h3>
+            <span class="drawer-id" id="drawerWorkflowId">Item ID: WF-204</span>
+          </div>
+          <button class="drawer-close-btn" id="closeDrawerBtn" title="Close Drawer">&times;</button>
+        </div>
+
+        <div class="drawer-body" id="drawerBody">
+          <!-- Rendered via app.js -->
+        </div>
+
+        <div class="drawer-footer">
+          <button class="btn-secondary" id="rejectActionBtn">Decline Request</button>
+          <button class="btn-neutral" id="inspectDiffBtn">Show Technical Details</button>
+          <button class="btn-primary-action" id="approveActionBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Approve & Update System</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- START A TASK MODAL -->
+    <div class="dispatch-modal-overlay hidden" id="dispatchModalOverlay">
+      <div class="dispatch-dialog">
+        <div class="dispatch-header">
+          <div>
+            <h3>Start an Automated Task</h3>
+            <p style="font-size: 0.78rem; color: #64748B; margin-top: 2px;">Choose a pre-built workflow. Nexus will guide the steps and ask you before saving anything important.</p>
+          </div>
+          <button class="close-modal-btn" id="closeDispatchBtn">&times;</button>
+        </div>
+        <div class="dispatch-body">
+          <label class="form-label" for="workflowSelect">Select Task Type</label>
+          <select class="form-select" id="workflowSelect">
+            <option value="vendor">1. Review New Vendor (Tax ID, Security Check & Contract)</option>
+            <option value="expense">2. Compare Team Expenses Against Budget</option>
+            <option value="incident">3. Troubleshoot Tech Issue & Prepare Safe Fix</option>
+            <option value="contract">4. Scan Company Contracts for Risky Clauses</option>
+            <option value="staffing">5. Check Team Workload & Draft Job Posting</option>
+          </select>
+
+          <label class="form-label mt-4" for="agentCustomPrompt">Any specific details or notes? (Optional)</label>
+          <textarea class="form-textarea" id="agentCustomPrompt" rows="3" placeholder="E.g., Check specifically for vendor 'Acme Analytics' or look at the EMEA department only..."></textarea>
+
+          <div class="callout info mt-3">
+            <strong>Peace of Mind:</strong> Nexus will never make financial transfers or permanent system changes without presenting the details to you first for approval.
+          </div>
+        </div>
+        <div class="dispatch-footer">
+          <button class="btn-secondary" id="cancelDispatchBtn">Cancel</button>
+          <button class="btn-primary-action" id="confirmDispatchBtn">Run This Task</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK TOUR / HELP MODAL -->
+    <div class="dispatch-modal-overlay hidden" id="helpModalOverlay">
+      <div class="dispatch-dialog" style="max-width: 580px;">
+        <div class="dispatch-header">
+          <h3>Welcome to Nexus — How It Works</h3>
+          <button class="close-modal-btn" id="closeHelpBtn">&times;</button>
+        </div>
+        <div class="dispatch-body">
+          <div class="tour-step">
+            <div class="tour-num">1</div>
+            <div>
+              <strong>Connects all your tools</strong>
+              <p>Nexus links Salesforce, Google Docs, Workday, and Jira together so you don't have to copy-paste between 10 different tabs.</p>
+            </div>
+          </div>
+          <div class="tour-step">
+            <div class="tour-num">2</div>
+            <div>
+              <strong>Instant Answers (Ask Company AI)</strong>
+              <p>Type any question into the search bar or the Ask AI tab to get synthesized answers with direct links to the exact source documents.</p>
+            </div>
+          </div>
+          <div class="tour-step">
+            <div class="tour-num">3</div>
+            <div>
+              <strong>Always keeps you in control</strong>
+              <p>Whenever an automated action affects finances or security, Nexus places it in your Review Queue. You always have the final say.</p>
+            </div>
+          </div>
+        </div>
+        <div class="dispatch-footer">
+          <button class="btn-primary-action" id="gotItHelpBtn">Got it, let's go!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINK NEW APP MODAL -->
+    <div class="dispatch-modal-overlay hidden" id="linkAppModalOverlay">
+      <div class="dispatch-dialog">
+        <div class="dispatch-header">
+          <h3>Link a New Tool to Nexus</h3>
+          <button class="close-modal-btn" id="closeLinkAppBtn">&times;</button>
+        </div>
+        <div class="dispatch-body">
+          <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Select an app to connect with 1-click single sign-on:</p>
+          <div class="app-picker-grid">
+            <div class="app-picker-item" onclick="simulateConnectApp('Slack')">
+              <span class="app-icon slack">💬</span>
+              <strong>Slack</strong>
+              <span>Team chat & channels</span>
+            </div>
+            <div class="app-picker-item" onclick="simulateConnectApp('Notion')">
+              <span class="app-icon notion">📝</span>
+              <strong>Notion</strong>
+              <span>Company notes & wikis</span>
+            </div>
+            <div class="app-picker-item" onclick="simulateConnectApp('HubSpot')">
+              <span class="app-icon hubspot">🎯</span>
+              <strong>HubSpot</strong>
+              <span>Marketing & sales leads</span>
+            </div>
+            <div class="app-picker-item" onclick="simulateConnectApp('GitHub')">
+              <span class="app-icon github">🐙</span>
+              <strong>GitHub</strong>
+              <span>Engineering code & PRs</span>
+            </div>
+          </div>
+        </div>
+        <div class="dispatch-footer">
+          <button class="btn-secondary" id="cancelLinkAppBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
