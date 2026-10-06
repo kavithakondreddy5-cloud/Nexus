@@ -37,21 +37,14 @@ Nexus is decoupled into a static frontend (designed for Vercel) and a Node.js/Ex
 
 ```text
 Nexus/
-├── index.html              # Frontend Command Center UI
-├── styles.css              # Premium Glassmorphism Design System
-├── app.js                  # Frontend interactive controller & API connections
+├── index.html              # Frontend UI structure
+├── styles.css              # Frontend styling
+├── app.js                  # Frontend logic & API connection
 │
-└── backend/                # Production-grade Node.js/TypeScript Backend
-    ├── package.json        # Backend dependencies & build scripts
-    ├── tsconfig.json       # TypeScript compilation settings
+└── backend/                # Node.js/Express Backend API
+    ├── package.json        # Backend dependencies
     └── src/
-        ├── config/         # Zod environment & Supabase client factories
-        ├── middleware/     # Supabase Auth Bearer JWT validator
-        ├── services/       # Dual-key Gemini router & audit logger
-        ├── controllers/    # POST /api/generate handler
-        ├── routes/         # Express router definitions
-        ├── app.ts          # Express Application configuration
-        └── server.ts       # Serverless & Node.js HTTP entry point
+        └── server.ts       # Backend server entry point
 ```
 
 ---
