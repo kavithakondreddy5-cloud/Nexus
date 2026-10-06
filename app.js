@@ -1418,66 +1418,63 @@ function triggerRAGSearch() {
   resultCard.classList.add('hidden');
   skeleton.classList.remove('hidden');
 
-  setTimeout(() => {
+  fetch('https://nexus-0n7h.onrender.com/api/generate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer nexus-test-token'
+    },
+    body: JSON.stringify({
+      prompt: query,
+      modelType: 'flash',
+      context: 'You are Nexus, an enterprise AI assistant helping a team member answer their question securely.'
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
     skeleton.classList.add('hidden');
     resultCard.classList.remove('hidden');
 
-    const lower = query.toLowerCase();
-
-    if (lower.includes('vendor') || lower.includes('liability')) {
-      resultContent.innerHTML = `
+    let outputHtml = '';
+    
+    if (data.success && data.data && data.data.content) {
+      // Basic markdown to HTML conversion for the AI response
+      const formattedContent = escapeHtml(data.data.content)
+        .replace(/\\n/g, '<br>')
+        .replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>');
+      
+      outputHtml = `
         <p>
-          According to our <strong>Company Standard Terms (2026 Master Service Agreement, Section 8.2)</strong>:
+          ${formattedContent}
         </p>
-        <p>
-          Standard approved vendor commercial liability limits are <strong>$5,000,000 per incident</strong> (or up to $10,000,000 total).
-        </p>
-        <div class="callout info">
-          <strong>Exceptions Policy:</strong> If a vendor requests a lower limit (under $2M), both our Legal Counsel and Security Lead must approve before signing.
+        <div class="callout info mt-4">
+          <strong>AI Model:</strong> Powered by Google Gemini (${data.data.metadata.provider_model})
+          <br><strong>Latency:</strong> ${data.data.metadata.processing_time_ms}ms
         </div>
       `;
-    } else if (lower.includes('who can approve') || lower.includes('50k')) {
-      resultContent.innerHTML = `
-        <p>
-          According to our <strong>European Procurement Guidelines (Workday Approval Matrix)</strong>:
-        </p>
-        <p>
-          Any contract or purchase order <strong>above $50,000</strong> in the EMEA region must be signed by either the <strong>VP of European Operations</strong> or the <strong>Chief Financial Officer</strong>.
-        </p>
-        <div class="callout success">
-          <strong>Current Authorizers:</strong> Elena Rostova (VP EMEA) and Marcus Vance (CFO).
-        </div>
-      `;
-    } else if (lower.includes('ticket') || lower.includes('it support')) {
-      resultContent.innerHTML = `
-        <p>
-          According to the <strong>Helpdesk Support Queue (Jira Service Management)</strong>:
-        </p>
-        <p>
-          There are currently <strong>6 open customer tickets</strong> waiting for customer replies for over 48 hours. None are marked urgent.
-        </p>
-        <div class="callout info">
-          <strong>Suggested Action:</strong> Nexus can send friendly automated follow-up emails to check if those customers still need assistance.
-        </div>
-      `;
+      showToast('Found answer securely across verified documents.');
     } else {
-      resultContent.innerHTML = `
-        <p>
-          We compared the numbers across <strong>NetSuite Accounting</strong> and <strong>Engineering Budgets (Jira)</strong> for Q3:
-        </p>
-        <p>
-          Total cloud computing spend was <strong>$842,500</strong>, compared to the approved planned budget of <strong>$689,000</strong>.
-        </p>
-        <div class="callout warning">
-          <strong>Why is there a $153,500 difference?</strong>
-          <br>&bull; <strong>$41,200</strong> came from an unassigned test computer cluster in Ohio (WF-204, currently in your approval queue).
-          <br>&bull; <strong>$112,300</strong> was due to test databases that were kept running over weekends instead of auto-pausing.
-        </div>
-      `;
+      throw new Error(data.error || 'Failed to generate response');
     }
 
-    showToast('Found answer across verified documents.');
-  }, 500);
+    resultContent.innerHTML = outputHtml;
+  })
+  .catch(error => {
+    skeleton.classList.add('hidden');
+    resultCard.classList.remove('hidden');
+    resultContent.innerHTML = `
+      <div class="callout warning">
+        <strong>Error:</strong> Could not connect to the Nexus AI Engine. Please try again.
+        <br><small>${escapeHtml(error.message)}</small>
+      </div>
+    `;
+    console.error('API Error:', error);
+  });
 }
 
 function showCitationPreview(docTitle) {
